@@ -9,10 +9,15 @@ import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import net.miginfocom.swing.MigLayout;
+import javax.swing.JButton;
 
 public class Login extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField textField;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -43,19 +48,39 @@ public class Login extends JFrame {
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_1 = new JPanel();
-		panel.add(panel_1);
+		panel.add(panel_1, BorderLayout.NORTH);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Customer");
-		panel_1.add(rdbtnNewRadioButton_1);
+		JRadioButton rdbtnStaff = new JRadioButton("Staff");
+		panel_1.add(rdbtnStaff);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Staff");
-		panel_1.add(rdbtnNewRadioButton);
+		JRadioButton rdbtnCustomer = new JRadioButton("Customer");
+		panel_1.add(rdbtnCustomer);
 		
 		JPanel panel_2 = new JPanel();
-		panel.add(panel_2);
+		panel.add(panel_2, BorderLayout.CENTER);
+		panel_2.setLayout(new MigLayout("", "[220px][220px]", "[117px][117px][]"));
+		
+		JLabel lblLogin = new JLabel("Login");
+		panel_2.add(lblLogin, "cell 0 0,grow");
+		
+		textField = new JTextField();
+		panel_2.add(textField, "cell 1 0,grow");
+		textField.setColumns(10);
+		
+		JLabel lblPassword = new JLabel("Password");
+		panel_2.add(lblPassword, "cell 0 1,grow");
+		
+		passwordField = new JPasswordField();
+		panel_2.add(passwordField, "cell 1 1,grow");
+		
+		JButton btnLogin = new JButton("Login");
+		panel_2.add(btnLogin, "cell 0 2");
+		
+		JButton btnRegister = new JButton("Register");
+		panel_2.add(btnRegister, "cell 1 2");
 	}
 
 }
