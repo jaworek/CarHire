@@ -1,7 +1,8 @@
+package model;
 import java.io.*;
 import java.util.ArrayList;
 
-class Model {
+public class Model {
     ArrayList<Customer> customers = new ArrayList<>();
     ArrayList<Vehicle> vehicles = new ArrayList<>();
 
@@ -11,46 +12,46 @@ class Model {
         System.out.println(vehicles);
     }
 
-    boolean checkLoginCredentials() {
-        String login = ViewLogin.textLogin.getText();
-        String password = new String(ViewLogin.textPassword.getPassword());
+//    boolean checkLoginCredentials() {
+//        String login = ViewLogin.textLogin.getText();
+//        String password = new String(ViewLogin.textPassword.getPassword());
+//
+//        if (ViewLogin.radioStaff.isSelected()) {
+//            if (login.equals("admin") && password.equals("admin")) {
+//                System.out.println("StaffPanel");
+//                return true;
+//            }
+//        }
+//
+//        // Loops through all customers and checks if login and password match one of the users
+//        for (Customer customer : customers) {
+//            if (customer.getUsername().equals(login) && customer.getPassword().equals(password)) {
+//                System.out.println(customer);
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
-        if (ViewLogin.radioStaff.isSelected()) {
-            if (login.equals("admin") && password.equals("admin")) {
-                System.out.println("StaffPanel");
-                return true;
-            }
-        }
-
-        // Loops through all customers and checks if login and password match one of the users
-        for (Customer customer : customers) {
-            if (customer.getUsername().equals(login) && customer.getPassword().equals(password)) {
-                System.out.println(customer);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    void createAccount() {
-        int id = 2;
-        String name = ViewRegistration.textName.getText(),
-                address = ViewRegistration.textAddress.getText(),
-                phoneNumber = ViewRegistration.textPhoneNumber.getText(),
-                email = ViewRegistration.textEmail.getText(),
-                doB = ViewRegistration.textDoB.getText(),
-                login = ViewRegistration.textLogin.getText(),
-                password = new String(ViewRegistration.textPassword.getPassword()),
-                password2 = new String(ViewRegistration.textPasswordRepeat.getPassword());
-        if (!name.isEmpty() && password.equals(password2)) {
-            Customer newCustomer = new Customer(id, name, address, phoneNumber, email, doB, login, password);
-            customers.add(newCustomer);
-            System.out.println("Account created");
-            ViewRegistration.buttonReturn.doClick();
-        } else {
-            System.out.println("Wrong details");
-        }
-    }
+//    void createAccount() {
+//        int id = 2;
+//        String name = ViewRegistration.textName.getText(),
+//                address = ViewRegistration.textAddress.getText(),
+//                phoneNumber = ViewRegistration.textPhoneNumber.getText(),
+//                email = ViewRegistration.textEmail.getText(),
+//                doB = ViewRegistration.textDoB.getText(),
+//                login = ViewRegistration.textLogin.getText(),
+//                password = new String(ViewRegistration.textPassword.getPassword()),
+//                password2 = new String(ViewRegistration.textPasswordRepeat.getPassword());
+//        if (!name.isEmpty() && password.equals(password2)) {
+//            Customer newCustomer = new Customer(id, name, address, phoneNumber, email, doB, login, password);
+//            customers.add(newCustomer);
+//            System.out.println("Account created");
+//            ViewRegistration.buttonReturn.doClick();
+//        } else {
+//            System.out.println("Wrong details");
+//        }
+//    }
 
     // Reads customers and vehicles object from the binary files
     void loadFile() {

@@ -2,6 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bbb53a3-c6c5-45d0-bc29-898264c00e9f" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tutorial/.gitignore" afterPath="$PROJECT_DIR$/out/production/Tutorial/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tutorial/CustomerView.class" afterPath="$PROJECT_DIR$/out/production/Tutorial/CustomerView.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tutorial/Login$1.class" afterPath="$PROJECT_DIR$/out/production/Tutorial/Login$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tutorial/Login.class" afterPath="$PROJECT_DIR$/out/production/Tutorial/Login.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tutorial/StaffView$1.class" afterPath="$PROJECT_DIR$/out/production/Tutorial/StaffView$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tutorial/StaffView.class" afterPath="$PROJECT_DIR$/out/production/Tutorial/StaffView.class" />
+      <change beforePath="$PROJECT_DIR$/src/CustomerView.java" afterPath="$PROJECT_DIR$/src/CustomerView.java" />
+      <change beforePath="$PROJECT_DIR$/src/Login.java" afterPath="$PROJECT_DIR$/src/Login.java" />
+      <change beforePath="$PROJECT_DIR$/src/Register.java" afterPath="$PROJECT_DIR$/src/Register.java" />
+      <change beforePath="$PROJECT_DIR$/src/StaffView.java" afterPath="$PROJECT_DIR$/src/StaffView.java" />
       <change beforePath="$PROJECT_DIR$/src/ViewApplication.java" afterPath="$PROJECT_DIR$/src/ViewApplication.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -27,8 +38,8 @@
       <file leaf-file-name="ViewApplication.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ViewApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="326">
+              <caret line="35" column="44" lean-forward="true" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -352,7 +363,7 @@
       <workItem from="1520939487817" duration="1165000" />
       <workItem from="1521120921772" duration="36000" />
       <workItem from="1521314172634" duration="1628000" />
-      <workItem from="1521315987576" duration="393000" />
+      <workItem from="1521315987576" duration="1351000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1521315029761</created>
@@ -365,7 +376,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25025000" />
+    <option name="totallyTimeSpent" value="25983000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1680" height="954" extended-state="0" />
@@ -871,8 +882,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ViewApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="326">
+          <caret line="35" column="44" lean-forward="true" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

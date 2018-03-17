@@ -1,3 +1,5 @@
+package model;
+
 class MiniBus extends Vehicle {
     private int seatingCapacity;
 

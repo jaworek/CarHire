@@ -1,3 +1,5 @@
+package model;
+
 class Lorry extends Vehicle
 {
     private double loadingCapacity;

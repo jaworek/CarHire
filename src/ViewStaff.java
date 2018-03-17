@@ -1,11 +1,11 @@
 import javax.swing.JPanel;
 
-public class Register extends JPanel {
+public class ViewStaff extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public Register() {
+	public ViewStaff() {
 
 	}
 

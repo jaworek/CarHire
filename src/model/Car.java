@@ -1,3 +1,5 @@
+package model;
+
 class Car extends Vehicle {
     private String fuelType;
     private int doors;
