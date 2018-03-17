@@ -35,30 +35,32 @@ class ViewApplication extends View {
         panelMain.setBackground(Color.BLUE);
         add(panelMain, BorderLayout.CENTER);
 
-        final Object[][] vehicles = {
-                {"Tesla", 5, true},
-                {"Tesla", 5, true},
-                {"Tesla", 5, true},
-                {"Tesla", 5, true},
-                {"Tesla", 5, true},
-                {"Tesla", 5, true},
-                {"Tesla", 5, true},
-                {"Tesla", 5, true},
-                {"Tesla", 5, true},
-                {"Tesla", 5, true},
-                {"Tesla", 5, true},
-                {"Tesla", 5, true},
-                {"Tesla", 5, true},
-                {"Tesla", 5, true},
-                {"Tesla", 5, true},
-        };
+//        final Object[][] vehicles = {
+//                {"Tesla", 5, true},
+//                {"Tesla", 5, true},
+//                {"Tesla", 5, true},
+//                {"Tesla", 5, true},
+//                {"Tesla", 5, true},
+//                {"Tesla", 5, true},
+//                {"Tesla", 5, true},
+//                {"Tesla", 5, true},
+//                {"Tesla", 5, true},
+//                {"Tesla", 5, true},
+//                {"Tesla", 5, true},
+//                {"Tesla", 5, true},
+//                {"Tesla", 5, true},
+//                {"Tesla", 5, true},
+//                {"Tesla", 5, true},
+//        };
+//
+//        final String[] headings = {"Model", "Daily hire rate", "Hired"};
+//
+//        JTable vehicleTable = new JTable(vehicles, headings);
+//
+//        JScrollPane scrollPane = new JScrollPane(vehicleTable);
+//        panelMain.add(scrollPane);
 
-        final String[] headings = {"Model", "Daily hire rate", "Hired"};
-
-        JTable vehicleTable = new JTable(vehicles, headings);
-
-        JScrollPane scrollPane = new JScrollPane(vehicleTable);
-        panelMain.add(scrollPane);
+        JTabbedPane pane = new JTabbedPane();
     }
 
     @Override
