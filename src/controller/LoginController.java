@@ -1,28 +1,50 @@
 package controller;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import view.Login;
+import view.MainView;
 
 public class LoginController implements ActionListener {
+	private MainView mainView;
 
-	private Login login;
-	
-	public LoginController(Login login) {
-		// TODO Auto-generated constructor stub
-		this.login = login;
+	public LoginController(MainView main) {
+		this.mainView = main;
 	}
+
+	// boolean checkLoginCredentials() {
+	// String login = ViewLogin.textLogin.getText();
+	// String password = new String(ViewLogin.textPassword.getPassword());
+	//
+	// if (ViewLogin.radioStaff.isSelected()) {
+	// if (login.equals("admin") && password.equals("admin")) {
+	// System.out.println("StaffPanel");
+	// return true;
+	// }
+	// }
+	//
+	// // Loops through all customers and checks if login and password match one of
+	// the
+	// // users
+	// for (Customer customer : customers) {
+	// if (customer.getUsername().equals(login) &&
+	// customer.getPassword().equals(password)) {
+	// System.out.println(customer);
+	// return true;
+	// }
+	// }
+	// return false;
+	// }
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		// TODO Auto-generated method stub
 		String source = event.getActionCommand();
-		
-		if(source == "Register") {
-			login.setRegisterPanel();
-		} else if(source == "Return") {
-			login.setLoginPanel();
+
+		if (source == "Register") {
+			mainView.setRegisterPanel();
+		} else if (source == "Login") {
+			mainView.setCustomerPanel();
 		}
 	}
-	
+
 }
