@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 import controller.StaffController;
 import net.miginfocom.swing.MigLayout;
 
-public class StaffView extends JPanel {
+public class StaffView extends AbstractView {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -19,6 +19,7 @@ public class StaffView extends JPanel {
 	 * Create the panel.
 	 */
 	public StaffView(StaffController staffController) {
+		super(staffController);
 		setLayout(new MigLayout("", "[450.00,grow][grow]", "[21px,grow]"));
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);

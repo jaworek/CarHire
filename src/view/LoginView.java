@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import controller.LoginController;
 import net.miginfocom.swing.MigLayout;
 
-public class LoginView extends JPanel {
+public class LoginView extends AbstractView {
 	private JTextField textField;
 	private JPasswordField passwordField;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -24,6 +24,7 @@ public class LoginView extends JPanel {
 	 * @param loginController
 	 */
 	public LoginView(LoginController loginController) {
+		super(loginController);
 		setLayout(new MigLayout("", "[450px]", "[40][267px]"));
 
 		JPanel panel_1 = new JPanel();

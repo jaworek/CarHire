@@ -1,11 +1,23 @@
 package controller;
 
-import view.MainView;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class StaffController {
+import model.MainModel;
 
-	public StaffController(MainView mainView) {
-		// TODO Auto-generated constructor stub
+public class StaffController extends AbstractController implements ActionListener {
+	private MainController mainController;
+	private MainModel mainModel;
+
+	public StaffController(MainController mainController, MainModel mainModel) {
+		this.mainController = mainController;
+		this.mainModel = mainModel;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

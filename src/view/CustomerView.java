@@ -8,13 +8,14 @@ import javax.swing.JTable;
 import controller.CustomerController;
 import net.miginfocom.swing.MigLayout;
 
-public class CustomerView extends JPanel {
+public class CustomerView extends AbstractView {
 	private JTable table;
 
 	/**
 	 * Create the panel.
 	 */
 	public CustomerView(CustomerController customerController) {
+		super(customerController);
 		setLayout(new MigLayout("", "[450.00,grow][grow]", "[grow]"));
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);

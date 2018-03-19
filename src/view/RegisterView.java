@@ -4,13 +4,12 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.RegisterController;
 import net.miginfocom.swing.MigLayout;
 
-public class RegisterView extends JPanel {
+public class RegisterView extends AbstractView {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -24,7 +23,7 @@ public class RegisterView extends JPanel {
 	 * Create the panel.
 	 */
 	public RegisterView(RegisterController registerController) {
-
+		super(registerController);
 		setLayout(new MigLayout("", "[61px][grow]", "[16px][][][][][][][][][][]"));
 
 		JLabel lblNewLabel = new JLabel("Register new customer");

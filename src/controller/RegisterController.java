@@ -3,13 +3,15 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import view.MainView;
+import model.MainModel;
 
-public class RegisterController implements ActionListener {
-	private MainView mainView;
+public class RegisterController extends AbstractController implements ActionListener {
+	private MainController mainController;
+	private MainModel mainModel;
 
-	public RegisterController(MainView mainView) {
-		this.mainView = mainView;
+	public RegisterController(MainController mainController, MainModel mainModel) {
+		this.mainController = mainController;
+		this.mainModel = mainModel;
 	}
 
 	// void createAccount() {
@@ -38,7 +40,7 @@ public class RegisterController implements ActionListener {
 		String source = event.getActionCommand();
 
 		if (source == "Return") {
-			mainView.setLoginPanel();
+			mainController.loadLogin();
 		} else if (source == "Create account") {
 			System.out.println("Works");
 		}

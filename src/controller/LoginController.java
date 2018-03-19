@@ -3,17 +3,14 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JPanel;
-
 import model.MainModel;
-import view.LoginView;
 
-public class LoginController implements ActionListener {
-	private LoginView loginView;
+public class LoginController extends AbstractController implements ActionListener {
+	private MainController mainController;
 	private MainModel mainModel;
 
-	public LoginController(LoginView loginView, MainModel mainModel) {
-		this.loginView = loginView;
+	public LoginController(MainController mainController, MainModel mainModel) {
+		this.mainController = mainController;
 		this.mainModel = mainModel;
 	}
 
@@ -46,14 +43,10 @@ public class LoginController implements ActionListener {
 		String source = event.getActionCommand();
 
 		if (source == "Register") {
-			mainView.setRegisterPanel();
+			mainController.loadRegister();
 		} else if (source == "Login") {
-			mainView.setCustomerPanel();
-		}
-	}
 
-	public JPanel getView() {
-		return loginView;
+		}
 	}
 
 }

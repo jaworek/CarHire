@@ -1,7 +1,10 @@
 package model;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class MainModel {
@@ -24,6 +27,22 @@ public class MainModel {
 		this.vehicles = vehicles;
 	}
 
+	// Saves vehicles and customers objects in the binary files
+	public void writeFile() {
+		try {
+			ObjectOutputStream customersFile = new ObjectOutputStream(new FileOutputStream("customers.dat"));
+			// customersFile.writeObject();
+			customersFile.close();
+
+			ObjectOutputStream vehiclesFile = new ObjectOutputStream(new FileOutputStream("vehicles.dat"));
+			// vehiclesFile.writeObject();
+			vehiclesFile.close();
+
+		} catch (IOException io) {
+			System.out.println(io);
+		}
+	}
+
 	// Reads customers and vehicles object from the binary files
 	public void loadFile() {
 		try {
@@ -37,7 +56,7 @@ public class MainModel {
 			vehiclesFile.close();
 
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 }
