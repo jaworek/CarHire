@@ -1,5 +1,6 @@
 import java.awt.EventQueue;
 
+import model.MainModel;
 import view.MainView;
 
 public class Application {
@@ -7,6 +8,7 @@ public class Application {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		MainModel.loadFile();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

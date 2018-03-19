@@ -2,11 +2,14 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import model.Customer;
 import view.MainView;
 
 public class LoginController implements ActionListener {
 	private MainView mainView;
+	private ArrayList<Customer> customers;
 
 	public LoginController(MainView main) {
 		this.mainView = main;

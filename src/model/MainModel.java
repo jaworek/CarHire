@@ -4,11 +4,11 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
-public class Model {
-	ArrayList<Customer> customers = new ArrayList<>();
-	ArrayList<Vehicle> vehicles = new ArrayList<>();
+public class MainModel {
+	private static ArrayList<Customer> customers = new ArrayList<>();
+	private static ArrayList<Vehicle> vehicles = new ArrayList<>();
 
-	public ArrayList<Customer> getCustomers() {
+	public static ArrayList<Customer> getCustomers() {
 		return customers;
 	}
 
@@ -16,7 +16,7 @@ public class Model {
 		this.customers = customers;
 	}
 
-	public ArrayList<Vehicle> getVehicles() {
+	public static ArrayList<Vehicle> getVehicles() {
 		return vehicles;
 	}
 
@@ -25,7 +25,7 @@ public class Model {
 	}
 
 	// Reads customers and vehicles object from the binary files
-	void loadFile() {
+	public static void loadFile() {
 		try {
 			ObjectInputStream customersFile = new ObjectInputStream(new FileInputStream("customers.dat"));
 			ObjectInputStream vehiclesFile = new ObjectInputStream(new FileInputStream("vehicles.dat"));
