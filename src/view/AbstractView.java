@@ -6,6 +6,8 @@ import controller.AbstractController;
 
 public abstract class AbstractView extends JPanel {
 	public AbstractView(AbstractController abstractController) {
-		abstractController.setView(this);
+		if (abstractController != null) {
+			abstractController.setView(this);
+		}
 	}
 }

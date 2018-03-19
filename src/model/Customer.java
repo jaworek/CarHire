@@ -8,8 +8,8 @@ public class Customer implements Serializable {
 	private String name, address, phoneNumber, email, dateOfBirth, username, password;
 	private List<Vehicle> hiredVehicles;
 
-	Customer(int id, String name, String address, String phoneNumber, String email, String dateOfBirth, String username,
-			String password) {
+	public Customer(int id, String name, String address, String phoneNumber, String email, String dateOfBirth,
+			String username, String password) {
 		this.id = id;
 		this.name = name;
 		this.address = address;

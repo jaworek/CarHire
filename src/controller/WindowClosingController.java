@@ -14,5 +14,6 @@ public class WindowClosingController extends WindowAdapter {
 
 	public void windowClosing(WindowEvent e) {
 		System.out.println("bob");
+		mainModel.writeFile();
 	}
 }

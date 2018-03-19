@@ -31,11 +31,11 @@ public class MainModel {
 	public void writeFile() {
 		try {
 			ObjectOutputStream customersFile = new ObjectOutputStream(new FileOutputStream("customers.dat"));
-			// customersFile.writeObject();
+			customersFile.writeObject(customers);
 			customersFile.close();
 
 			ObjectOutputStream vehiclesFile = new ObjectOutputStream(new FileOutputStream("vehicles.dat"));
-			// vehiclesFile.writeObject();
+			vehiclesFile.writeObject(vehicles);
 			vehiclesFile.close();
 
 		} catch (IOException io) {
