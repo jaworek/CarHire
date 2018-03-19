@@ -2,17 +2,19 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-import model.Customer;
-import view.MainView;
+import javax.swing.JPanel;
+
+import model.MainModel;
+import view.LoginView;
 
 public class LoginController implements ActionListener {
-	private MainView mainView;
-	private ArrayList<Customer> customers;
+	private LoginView loginView;
+	private MainModel mainModel;
 
-	public LoginController(MainView main) {
-		this.mainView = main;
+	public LoginController(LoginView loginView, MainModel mainModel) {
+		this.loginView = loginView;
+		this.mainModel = mainModel;
 	}
 
 	// boolean checkLoginCredentials() {
@@ -48,6 +50,10 @@ public class LoginController implements ActionListener {
 		} else if (source == "Login") {
 			mainView.setCustomerPanel();
 		}
+	}
+
+	public JPanel getView() {
+		return loginView;
 	}
 
 }
