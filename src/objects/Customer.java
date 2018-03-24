@@ -1,12 +1,13 @@
-package model;
+package objects;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Customer implements Serializable {
 	private int id;
 	private String name, address, phoneNumber, email, dateOfBirth, username, password;
-	private List<Vehicle> hiredVehicles;
+	private ArrayList<Vehicle> hiredVehicles;
 
 	public Customer(int id, String name, String address, String phoneNumber, String email, String dateOfBirth,
 			String username, String password) {
@@ -18,6 +19,7 @@ public class Customer implements Serializable {
 		this.dateOfBirth = dateOfBirth;
 		this.username = username;
 		this.password = password;
+		this.hiredVehicles = new ArrayList<Vehicle>();
 	}
 
 	@Override
@@ -88,4 +90,13 @@ public class Customer implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public List<Vehicle> getHiredVehicles() {
+		return hiredVehicles;
+	}
+
+	public void setHiredVehicles(ArrayList<Vehicle> hiredVehicles) {
+		this.hiredVehicles = hiredVehicles;
+	}
+
 }

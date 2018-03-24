@@ -3,17 +3,23 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.Customer;
 import model.MainModel;
+import objects.Customer;
 import view.RegisterView;
 
 public class RegisterController extends AbstractController implements ActionListener {
 	private MainController mainController;
 	private MainModel mainModel;
+	private RegisterView registerView;
 
 	public RegisterController(MainController mainController, MainModel mainModel) {
 		this.mainController = mainController;
 		this.mainModel = mainModel;
+		this.registerView = new RegisterView(this);
+	}
+
+	void validateDetails() {
+
 	}
 
 	void createAccount() {
@@ -32,7 +38,7 @@ public class RegisterController extends AbstractController implements ActionList
 			System.out.println(mainModel.getCustomers());
 			mainController.loadLogin();
 		} else {
-			System.out.println("Wrong details");
+			registerView.setErrorLabelText("Wrong details");
 		}
 	}
 

@@ -19,6 +19,7 @@ public class RegisterView extends AbstractView {
 	private JTextField textPhoneNumber;
 	private JTextField textEmail;
 	private JTextField textDoB;
+	private JLabel errorLabel;
 
 	/**
 	 * Create the panel.
@@ -89,15 +90,14 @@ public class RegisterView extends AbstractView {
 		JButton btnNewButton = new JButton("Return");
 		btnNewButton.addActionListener(registerController);
 
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setForeground(Color.RED);
-		add(lblNewLabel_2, "cell 0 9 2 1,alignx center");
+		errorLabel = new JLabel(" ");
+		errorLabel.setForeground(Color.RED);
+		add(errorLabel, "cell 0 9 2 1,alignx center");
 		add(btnNewButton, "flowx,cell 0 10 2 1,alignx center");
 
 		JButton btnNewButton_1 = new JButton("Create account");
 		btnNewButton_1.addActionListener(registerController);
 		add(btnNewButton_1, "cell 0 10 2 1");
-
 	}
 
 	public JTextField getTextLogin() {
@@ -130,6 +130,10 @@ public class RegisterView extends AbstractView {
 
 	public JTextField getTextDoB() {
 		return textDoB;
+	}
+
+	public void setErrorLabelText(String errorLabelText) {
+		this.errorLabel.setText(errorLabelText);
 	}
 
 }

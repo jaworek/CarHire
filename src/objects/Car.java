@@ -1,4 +1,4 @@
-package model;
+package objects;
 
 public class Car extends Vehicle {
 	private String fuelType;

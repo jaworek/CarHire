@@ -1,4 +1,4 @@
-package model;
+package objects;
 
 public class Lorry extends Vehicle {
 	private double loadingCapacity;

@@ -19,6 +19,7 @@ public class LoginView extends AbstractView {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JRadioButton rdbtnCustomer;
 	private JRadioButton rdbtnStaff;
+	private JLabel errorLabel;
 
 	/**
 	 * Create the panel.
@@ -61,9 +62,9 @@ public class LoginView extends AbstractView {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(loginController);
 
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setForeground(Color.RED);
-		panel_2.add(lblNewLabel, "cell 0 2 2 1,alignx center");
+		errorLabel = new JLabel();
+		errorLabel.setForeground(Color.RED);
+		panel_2.add(errorLabel, "cell 0 2 2 1,alignx center");
 		panel_2.add(btnLogin, "flowx,cell 0 3 2 1,alignx center");
 
 		JButton btnRegister = new JButton("Register");
@@ -85,6 +86,14 @@ public class LoginView extends AbstractView {
 
 	public JRadioButton getRdbtnStaff() {
 		return rdbtnStaff;
+	}
+
+	public JLabel getErrorLabel() {
+		return errorLabel;
+	}
+
+	public void setErrorLabelText(String errorLabelText) {
+		this.errorLabel.setText(errorLabelText);
 	}
 
 }

@@ -2,10 +2,10 @@ package controller;
 
 import java.awt.EventQueue;
 
+import model.CustomerModel;
 import model.MainModel;
-import view.LoginView;
+import objects.Customer;
 import view.MainView;
-import view.RegisterView;
 
 public class MainController {
 	private MainModel mainModel;
@@ -14,6 +14,8 @@ public class MainController {
 	// Controllers
 	private LoginController loginController;
 	private RegisterController registerController;
+	private CustomerController customerController;
+	private StaffController staffController;
 
 	public MainController() {
 		this.mainModel = new MainModel();
@@ -39,7 +41,6 @@ public class MainController {
 	public void loadLogin() {
 		if (loginController == null) {
 			loginController = new LoginController(this, mainModel);
-			LoginView loginView = new LoginView(loginController);
 		}
 		mainView.setPanel(loginController.getView());
 	}
@@ -47,9 +48,24 @@ public class MainController {
 	public void loadRegister() {
 		if (registerController == null) {
 			registerController = new RegisterController(this, mainModel);
-			RegisterView registerView = new RegisterView(registerController);
+			// RegisterView registerView = new RegisterView(registerController);
 		}
 		mainView.setPanel(registerController.getView());
+	}
+
+	public void loadCustomer(Customer customer) {
+		if (customerController == null) {
+			CustomerModel customerModel = new CustomerModel(customer);
+			customerController = new CustomerController(this, mainModel, customerModel);
+		}
+		mainView.setPanel(customerController.getView());
+	}
+
+	public void loadStaff() {
+		if (staffController == null) {
+			staffController = new StaffController(this, mainModel);
+		}
+		mainView.setPanel(staffController.getView());
 	}
 
 	public MainModel getModel() {

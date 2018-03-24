@@ -7,6 +7,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import objects.Customer;
+import objects.Vehicle;
+
 public class MainModel {
 	private ArrayList<Customer> customers = new ArrayList<Customer>();
 	private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
