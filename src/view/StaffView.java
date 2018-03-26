@@ -18,11 +18,11 @@ public class StaffView extends AbstractView {
 	private JTextField textRegistrationNumber;
 	private JTextField textHireRate;
 	private JTable tableCustomers;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField textName;
+	private JTextField textAddress;
+	private JTextField textPhoneNumber;
+	private JTextField textEmail;
+	private JTextField textDateOfBirth;
 	private JTextField textFuel;
 	private JTextField textDoors;
 	private JTextField textField_5;
@@ -31,8 +31,13 @@ public class StaffView extends AbstractView {
 	private JTextField textField_8;
 	private JTextField textField_9;
 	private JTable table;
+	private JTable tableHiredVehicles;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
 	private JTable table_1;
-	private JTextField textField_10;
 
 	/**
 	 * Create the panel.
@@ -47,13 +52,13 @@ public class StaffView extends AbstractView {
 		// Car panel
 		JPanel panelCar = new JPanel();
 		tabbedPane.addTab("Cars", null, panelCar, null);
-		panelCar.setLayout(new MigLayout("", "[415.00,grow][102px][]", "[][16px][][][][][][][][][][][][]"));
+		panelCar.setLayout(new MigLayout("", "[450.00][102px][]", "[][16px][][][][][][][][][][][][]"));
 
-		JLabel lblAddNewVehicle = new JLabel("Add new car");
-		panelCar.add(lblAddNewVehicle, "cell 1 0 2 1,alignx center,aligny top");
+		JLabel lblAddNewCar = new JLabel("Add new car");
+		panelCar.add(lblAddNewCar, "cell 1 0 2 1,alignx center,aligny top");
 
-		JLabel lblNewLabel = new JLabel("Model");
-		panelCar.add(lblNewLabel, "cell 1 2,alignx trailing");
+		JLabel lblCarModel = new JLabel("Model");
+		panelCar.add(lblCarModel, "cell 1 2,alignx trailing");
 
 		textModel = new JTextField();
 		panelCar.add(textModel, "cell 2 2,growx");
@@ -127,63 +132,123 @@ public class StaffView extends AbstractView {
 		// Lorry panel
 		JPanel panelLorry = new JPanel();
 		tabbedPane.addTab("Lorries", null, panelLorry, null);
-		panelLorry.setLayout(new MigLayout("", "[112.00][grow]", "[][][][][][][]"));
+		panelLorry.setLayout(new MigLayout("", "[313.00,grow][112.00][grow]", "[][][][][][][]"));
 
 		JLabel lblAddNewLorry = new JLabel("Add new lorry");
-		panelLorry.add(lblAddNewLorry, "cell 0 0 2 1,alignx center");
+		panelLorry.add(lblAddNewLorry, "cell 1 0 2 1,alignx center");
+
+		JPanel panel_3 = new JPanel();
+		panelLorry.add(panel_3, "cell 0 1 1 6,grow");
 
 		JLabel lblModel = new JLabel("Model");
-		panelLorry.add(lblModel, "cell 0 1,alignx trailing");
+		panelLorry.add(lblModel, "cell 1 1,alignx trailing");
 
 		textField_5 = new JTextField();
-		panelLorry.add(textField_5, "cell 1 1,growx");
+		panelLorry.add(textField_5, "cell 2 1,growx");
 		textField_5.setColumns(10);
 
 		JLabel lblTopSpeed_1 = new JLabel("Top speed");
-		panelLorry.add(lblTopSpeed_1, "cell 0 2,alignx trailing");
+		panelLorry.add(lblTopSpeed_1, "cell 1 2,alignx trailing");
 
 		textField_6 = new JTextField();
-		panelLorry.add(textField_6, "cell 1 2,growx");
+		panelLorry.add(textField_6, "cell 2 2,growx");
 		textField_6.setColumns(10);
 
 		JLabel lblRegistrationNumber = new JLabel("Registration number");
-		panelLorry.add(lblRegistrationNumber, "cell 0 3,alignx trailing");
+		panelLorry.add(lblRegistrationNumber, "cell 1 3,alignx trailing");
 
 		textField_7 = new JTextField();
-		panelLorry.add(textField_7, "cell 1 3,growx");
+		panelLorry.add(textField_7, "cell 2 3,growx");
 		textField_7.setColumns(10);
 
 		JLabel lblHireRate_1 = new JLabel("Hire rate");
-		panelLorry.add(lblHireRate_1, "cell 0 4,alignx trailing");
+		panelLorry.add(lblHireRate_1, "cell 1 4,alignx trailing");
 
 		textField_8 = new JTextField();
-		panelLorry.add(textField_8, "cell 1 4,growx");
+		panelLorry.add(textField_8, "cell 2 4,growx");
 		textField_8.setColumns(10);
 
 		JLabel lblLoadingCapacity = new JLabel("Loading capacity");
-		panelLorry.add(lblLoadingCapacity, "cell 0 5,alignx trailing");
+		panelLorry.add(lblLoadingCapacity, "cell 1 5,alignx trailing");
 
 		textField_9 = new JTextField();
-		panelLorry.add(textField_9, "cell 1 5,growx");
+		panelLorry.add(textField_9, "cell 2 5,growx");
 		textField_9.setColumns(10);
 
 		JButton btnAddLorry = new JButton("Add lorry");
-		panelLorry.add(btnAddLorry, "cell 0 6 2 1,alignx center");
+		panelLorry.add(btnAddLorry, "cell 1 6 2 1,alignx center");
 
 		// Minibus panel
 		JPanel panelMinibus = new JPanel();
 		tabbedPane.addTab("Minibuses", null, panelMinibus, null);
-		panelMinibus.setLayout(new MigLayout("", "[][grow]", "[][]"));
+		panelMinibus.setLayout(new MigLayout("", "[450][grow][grow]", "[][][][][][][][][][][][43.00]"));
 
-		JLabel lblAddNewMinibus = new JLabel("Add new minibus");
-		panelMinibus.add(lblAddNewMinibus, "cell 0 0 2 1");
+		JPanel panel_2 = new JPanel();
+		panelMinibus.add(panel_2, "cell 0 0 1 12,grow");
+		panel_2.setLayout(new MigLayout("", "[454px]", "[404px]"));
 
-		JLabel lblModel_1 = new JLabel("Model");
-		panelMinibus.add(lblModel_1, "cell 0 1,alignx trailing");
+		JScrollPane scrollPane_2 = new JScrollPane();
+		panel_2.add(scrollPane_2, "cell 0 0,alignx left,aligny top");
 
-		textField_10 = new JTextField();
-		panelMinibus.add(textField_10, "cell 1 1,growx");
-		textField_10.setColumns(10);
+		table_1 = new JTable();
+		scrollPane_2.setViewportView(table_1);
+
+		JLabel labelAddMinibus = new JLabel("Add new minibus");
+		panelMinibus.add(labelAddMinibus, "cell 1 0 2 1,alignx center");
+
+		JLabel labelModel = new JLabel("Model");
+		panelMinibus.add(labelModel, "cell 1 1,alignx trailing");
+
+		textField = new JTextField();
+		textField.setColumns(10);
+		panelMinibus.add(textField, "cell 2 1,growx");
+
+		JLabel label_4 = new JLabel("Top speed");
+		panelMinibus.add(label_4, "cell 1 2,alignx trailing");
+
+		textField_1 = new JTextField();
+		panelMinibus.add(textField_1, "cell 2 2,growx");
+		textField_1.setColumns(10);
+
+		JLabel label_5 = new JLabel("Registration number");
+		panelMinibus.add(label_5, "cell 1 3,alignx trailing");
+
+		textField_2 = new JTextField();
+		panelMinibus.add(textField_2, "cell 2 3,growx");
+		textField_2.setColumns(10);
+
+		JLabel label_6 = new JLabel("Hire rate");
+		panelMinibus.add(label_6, "cell 1 4,alignx trailing");
+
+		textField_3 = new JTextField();
+		panelMinibus.add(textField_3, "cell 2 4,growx");
+		textField_3.setColumns(10);
+
+		JLabel lblSeatingCapacity = new JLabel("Seating capacity");
+		panelMinibus.add(lblSeatingCapacity, "cell 1 5,alignx trailing");
+
+		textField_4 = new JTextField();
+		panelMinibus.add(textField_4, "cell 2 5,growx");
+		textField_4.setColumns(10);
+
+		JButton btnAddMinibus = new JButton("Add minibus");
+		panelMinibus.add(btnAddMinibus, "cell 1 6 2 1,alignx center");
+
+		JLabel label_3 = new JLabel("Hire to customer:");
+		panelMinibus.add(label_3, "cell 1 7 2 1,alignx center");
+
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setActionCommand("comboCustomers");
+		panelMinibus.add(comboBox_1, "cell 1 8 2 1,growx");
+
+		JButton button_2 = new JButton("Hire");
+		panelMinibus.add(button_2, "cell 1 9 2 1,alignx center");
+
+		JLabel label_7 = new JLabel("Remove selected vehicle:");
+		panelMinibus.add(label_7, "cell 1 10 2 1,alignx center");
+
+		JButton button_3 = new JButton("Remove");
+		panelMinibus.add(button_3, "cell 1 11 2 1,alignx center");
 
 		JPanel panelCustomers = new JPanel();
 		tabbedPane.addTab("Customers", null, panelCustomers, null);
@@ -208,42 +273,42 @@ public class StaffView extends AbstractView {
 		JLabel lblName = new JLabel("Name");
 		panel.add(lblName, "cell 0 1,alignx trailing");
 
-		textField = new JTextField();
-		textField.setEditable(false);
-		panel.add(textField, "cell 1 1,growx");
-		textField.setColumns(10);
+		textName = new JTextField();
+		textName.setEditable(false);
+		panel.add(textName, "cell 1 1,growx");
+		textName.setColumns(10);
 
 		JLabel lblNewLabel_2 = new JLabel("Address");
 		panel.add(lblNewLabel_2, "cell 0 2,alignx trailing");
 
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		panel.add(textField_1, "cell 1 2,growx");
-		textField_1.setColumns(10);
+		textAddress = new JTextField();
+		textAddress.setEditable(false);
+		panel.add(textAddress, "cell 1 2,growx");
+		textAddress.setColumns(10);
 
 		JLabel lblPhoneNumber = new JLabel("Phone number");
 		panel.add(lblPhoneNumber, "cell 0 3,alignx trailing");
 
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		panel.add(textField_2, "cell 1 3,growx");
-		textField_2.setColumns(10);
+		textPhoneNumber = new JTextField();
+		textPhoneNumber.setEditable(false);
+		panel.add(textPhoneNumber, "cell 1 3,growx");
+		textPhoneNumber.setColumns(10);
 
 		JLabel lblEmail = new JLabel("Email");
 		panel.add(lblEmail, "cell 0 4,alignx trailing");
 
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		panel.add(textField_3, "cell 1 4,growx");
-		textField_3.setColumns(10);
+		textEmail = new JTextField();
+		textEmail.setEditable(false);
+		panel.add(textEmail, "cell 1 4,growx");
+		textEmail.setColumns(10);
 
 		JLabel lblDateOfBirth = new JLabel("Date of birth");
 		panel.add(lblDateOfBirth, "cell 0 5,alignx trailing");
 
-		textField_4 = new JTextField();
-		textField_4.setEditable(false);
-		panel.add(textField_4, "cell 1 5,growx");
-		textField_4.setColumns(10);
+		textDateOfBirth = new JTextField();
+		textDateOfBirth.setEditable(false);
+		panel.add(textDateOfBirth, "cell 1 5,growx");
+		textDateOfBirth.setColumns(10);
 
 		JButton btnReturn = new JButton("Return");
 		btnReturn.addActionListener(staffController);
@@ -254,8 +319,8 @@ public class StaffView extends AbstractView {
 		JScrollPane scrollPane_3 = new JScrollPane();
 		panel.add(scrollPane_3, "cell 0 7 2 1,grow");
 
-		table_1 = new JTable();
-		scrollPane_3.setViewportView(table_1);
+		tableHiredVehicles = new JTable();
+		scrollPane_3.setViewportView(tableHiredVehicles);
 		panel.add(btnReturn, "cell 0 9 2 1,alignx center");
 		panelCustomers.add(btnSelect, "cell 0 1,alignx center");
 	}
