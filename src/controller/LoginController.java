@@ -16,7 +16,6 @@ public class LoginController extends AbstractController implements ActionListene
 		this.mainController = mainController;
 		this.mainModel = mainModel;
 		this.loginView = new LoginView(this);
-
 	}
 
 	void checkLoginCustomer(String login, String password) {
@@ -26,7 +25,6 @@ public class LoginController extends AbstractController implements ActionListene
 				mainController.loadCustomer(customer);
 			} else {
 				loginView.setErrorLabelText("Invalid login or password");
-				// LoginView.setErrorText("Invalid login or password");
 			}
 		}
 	}
@@ -36,7 +34,7 @@ public class LoginController extends AbstractController implements ActionListene
 			System.out.println("Staff login");
 			mainController.loadStaff();
 		} else {
-
+			loginView.setErrorLabelText("Invalid login or password");
 		}
 	}
 

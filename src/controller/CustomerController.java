@@ -29,16 +29,16 @@ public class CustomerController extends AbstractController implements ActionList
 
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
-		for (Vehicle vehicle : mainModel.getVehicles()) {
-			String model = vehicle.getModel();
-			int topSpeed = vehicle.getTopSpeed();
-			String registrationNumber = vehicle.getRegistrationNumber();
-			double hireRate = vehicle.getDailyHireRate();
-
-			Object[] data = { model, topSpeed, registrationNumber, hireRate };
-
-			tableModel.addRow(data);
-		}
+		// for (Vehicle vehicle : mainModel.getVehicles()) {
+		// String model = vehicle.getModel();
+		// int topSpeed = vehicle.getTopSpeed();
+		// String registrationNumber = vehicle.getRegistrationNumber();
+		// double hireRate = vehicle.getDailyHireRate();
+		//
+		// Object[] data = { model, topSpeed, registrationNumber, hireRate };
+		//
+		// tableModel.addRow(data);
+		// }
 
 		return tableModel;
 	}

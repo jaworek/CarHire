@@ -15,21 +15,22 @@ public class VehicleController {
 	}
 
 	// Overloaded function used to add different types of vehicles
-	void addVehicle(String model, int topSpeed, String registrationNumber, double dailyHireRate, String fuelType,
-			int doors) {
-		Car newCar = new Car(model, topSpeed, registrationNumber, dailyHireRate, fuelType, doors);
-		mainModel.getVehicles().add(newCar);
+	void addVehicle(int id, String model, int topSpeed, String registrationNumber, double dailyHireRate,
+			String fuelType, int doors) {
+		Car newCar = new Car(id, model, topSpeed, registrationNumber, dailyHireRate, fuelType, doors);
+		mainModel.getCars().add(newCar);
 	}
 
-	void addVehicle(String model, int topSpeed, String registrationNumber, double dailyHireRate,
+	void addVehicle(int id, String model, int topSpeed, String registrationNumber, double dailyHireRate,
 			double loadingCapacity) {
-		Lorry newLorry = new Lorry(model, topSpeed, registrationNumber, dailyHireRate, loadingCapacity);
-		mainModel.getVehicles().add(newLorry);
+		Lorry newLorry = new Lorry(id, model, topSpeed, registrationNumber, dailyHireRate, loadingCapacity);
+		mainModel.getLorries().add(newLorry);
 	}
 
-	void addVehicle(String model, int topSpeed, String registrationNumber, double dailyHireRate, int seatingCapacity) {
-		MiniBus newMiniBus = new MiniBus(model, topSpeed, registrationNumber, dailyHireRate, seatingCapacity);
-		mainModel.getVehicles().add(newMiniBus);
+	void addVehicle(int id, String model, int topSpeed, String registrationNumber, double dailyHireRate,
+			int seatingCapacity) {
+		MiniBus newMiniBus = new MiniBus(id, model, topSpeed, registrationNumber, dailyHireRate, seatingCapacity);
+		mainModel.getMinibuses().add(newMiniBus);
 	}
 
 }

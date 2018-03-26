@@ -3,8 +3,9 @@ package objects;
 public class Lorry extends Vehicle {
 	private double loadingCapacity;
 
-	public Lorry(String model, int topSpeed, String registrationNumber, double dailyHireRate, double loadingCapacity) {
-		super(model, topSpeed, registrationNumber, dailyHireRate);
+	public Lorry(int id, String model, int topSpeed, String registrationNumber, double dailyHireRate,
+			double loadingCapacity) {
+		super(id, model, topSpeed, registrationNumber, dailyHireRate);
 		this.loadingCapacity = loadingCapacity;
 	}
 

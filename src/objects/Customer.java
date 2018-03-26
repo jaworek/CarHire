@@ -2,7 +2,6 @@ package objects;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Customer implements Serializable {
 	private int id;
@@ -91,7 +90,7 @@ public class Customer implements Serializable {
 		this.password = password;
 	}
 
-	public List<Vehicle> getHiredVehicles() {
+	public ArrayList<Vehicle> getHiredVehicles() {
 		return hiredVehicles;
 	}
 

@@ -71,4 +71,12 @@ public class MainController {
 	public MainModel getModel() {
 		return mainModel;
 	}
+
+	public MainView getMainView() {
+		return mainView;
+	}
+
+	public void setMainView(MainView mainView) {
+		this.mainView = mainView;
+	}
 }

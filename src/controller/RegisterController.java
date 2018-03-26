@@ -24,7 +24,7 @@ public class RegisterController extends AbstractController implements ActionList
 
 	void createAccount() {
 		RegisterView registerView = (RegisterView) getView();
-		int id = 2;
+		int id = mainModel.getCustomers().size();
 		String name = registerView.getTextName().getText(), address = registerView.getTextAddress().getText(),
 				phoneNumber = registerView.getTextPhoneNumber().getText(),
 				email = registerView.getTextEmail().getText(), doB = registerView.getTextDoB().getText(),

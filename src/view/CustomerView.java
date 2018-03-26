@@ -13,8 +13,8 @@ import net.miginfocom.swing.MigLayout;
 import objects.Customer;
 
 public class CustomerView extends AbstractView {
-	private JTable table;
-	private JTable table_1;
+	private JTable tableHiredVehicles;
+	private JTable tableAvailableVehicles;
 	private JTextField textName;
 	private JTextField textAddress;
 	private JTextField textPhoneNumber;
@@ -85,8 +85,8 @@ public class CustomerView extends AbstractView {
 		JScrollPane scrollPane_1 = new JScrollPane();
 		panel_3.add(scrollPane_1, "cell 0 0,alignx left,aligny top");
 
-		table_1 = new JTable(customerController.generateHiredVehiclesTable());
-		scrollPane_1.setViewportView(table_1);
+		tableAvailableVehicles = new JTable(customerController.generateAvailableVehiclesTable());
+		scrollPane_1.setViewportView(tableAvailableVehicles);
 
 		JPanel panel_4 = new JPanel();
 		panel_3.add(panel_4, "cell 0 1,grow");
@@ -103,8 +103,8 @@ public class CustomerView extends AbstractView {
 		JScrollPane scrollPane = new JScrollPane();
 		panel_2.add(scrollPane, "cell 0 0,alignx left,aligny top");
 
-		table = new JTable(customerController.generateAvailableVehiclesTable());
-		scrollPane.setViewportView(table);
+		tableHiredVehicles = new JTable(customerController.generateHiredVehiclesTable());
+		scrollPane.setViewportView(tableHiredVehicles);
 
 		JPanel panel = new JPanel();
 		panel_2.add(panel, "cell 0 1,grow");

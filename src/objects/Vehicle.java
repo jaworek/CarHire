@@ -3,13 +3,15 @@ package objects;
 import java.io.Serializable;
 
 public abstract class Vehicle implements Serializable {
+	private int id;
 	private String model;
 	private int topSpeed;
 	private String registrationNumber;
 	private double dailyHireRate;
 	private boolean hired = false;
 
-	Vehicle(String model, int topSpeed, String registrationNumber, double dailyHireRate) {
+	Vehicle(int id, String model, int topSpeed, String registrationNumber, double dailyHireRate) {
+		this.id = id;
 		this.model = model;
 		this.topSpeed = topSpeed;
 		this.registrationNumber = registrationNumber;
@@ -20,6 +22,14 @@ public abstract class Vehicle implements Serializable {
 	public String toString() {
 		return "Vehicle{" + "model='" + model + '\'' + ", topSpeed=" + topSpeed + ", registrationNumber='"
 				+ registrationNumber + '\'' + ", dailyHireRate=" + dailyHireRate + '}';
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getModel() {
