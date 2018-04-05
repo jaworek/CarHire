@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import objects.Car;
 import objects.Customer;
@@ -13,13 +14,53 @@ import objects.Lorry;
 import objects.MiniBus;
 
 public class MainModel {
-	private ArrayList<Customer> customers = new ArrayList<Customer>();
-	// private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
-	private ArrayList<Car> cars = new ArrayList<Car>();
-	private ArrayList<Lorry> lorries = new ArrayList<Lorry>();
-	private ArrayList<MiniBus> minibuses = new ArrayList<MiniBus>();
+	private List<Customer> customers = new ArrayList<Customer>();
+	private List<Car> cars = new ArrayList<Car>();
+	private List<Lorry> lorries = new ArrayList<Lorry>();
+	private List<MiniBus> minibuses = new ArrayList<MiniBus>();
+	private int maxId = -1;
 
-	public ArrayList<Customer> getCustomers() {
+	public Customer getCustomerById(int id) {
+		for (Customer customer : customers) {
+			if (customer.getId() == id) {
+				return customer;
+			}
+		}
+
+		return null;
+	}
+
+	public Car getCarById(int id) {
+		for (Car car : cars) {
+			if (car.getId() == id) {
+				return car;
+			}
+		}
+
+		return null;
+	}
+
+	public Lorry getLorryById(int id) {
+		for (Lorry lorry : lorries) {
+			if (lorry.getId() == id) {
+				return lorry;
+			}
+		}
+
+		return null;
+	}
+
+	public MiniBus getMinibusById(int id) {
+		for (MiniBus minibus : minibuses) {
+			if (minibus.getId() == id) {
+				return minibus;
+			}
+		}
+
+		return null;
+	}
+
+	public List<Customer> getCustomers() {
 		return customers;
 	}
 
@@ -27,15 +68,7 @@ public class MainModel {
 		this.customers = customers;
 	}
 
-	// public ArrayList<Vehicle> getVehicles() {
-	// return vehicles;
-	// }
-	//
-	// public void setVehicles(ArrayList<Vehicle> vehicles) {
-	// this.vehicles = vehicles;
-	// }
-
-	public ArrayList<Car> getCars() {
+	public List<Car> getCars() {
 		return cars;
 	}
 
@@ -43,7 +76,7 @@ public class MainModel {
 		this.cars = cars;
 	}
 
-	public ArrayList<Lorry> getLorries() {
+	public List<Lorry> getLorries() {
 		return lorries;
 	}
 
@@ -51,12 +84,37 @@ public class MainModel {
 		this.lorries = lorries;
 	}
 
-	public ArrayList<MiniBus> getMinibuses() {
+	public List<MiniBus> getMinibuses() {
 		return minibuses;
 	}
 
 	public void setMinibuses(ArrayList<MiniBus> minibuses) {
 		this.minibuses = minibuses;
+	}
+
+	public int generateId() {
+		if (maxId != -1) {
+			return ++maxId;
+		}
+		for (Car car : getCars()) {
+			if (car.getId() > maxId) {
+				maxId = car.getId();
+			}
+		}
+
+		for (Lorry lorry : getLorries()) {
+			if (lorry.getId() > maxId) {
+				maxId = lorry.getId();
+			}
+		}
+
+		for (MiniBus minibus : getMinibuses()) {
+			if (minibus.getId() > maxId) {
+				maxId = minibus.getId();
+			}
+		}
+
+		return ++maxId;
 	}
 
 	// Saves vehicles and customers objects in the binary files
@@ -65,11 +123,6 @@ public class MainModel {
 			ObjectOutputStream customersFile = new ObjectOutputStream(new FileOutputStream("customers.dat"));
 			customersFile.writeObject(customers);
 			customersFile.close();
-
-			// ObjectOutputStream vehiclesFile = new ObjectOutputStream(new
-			// FileOutputStream("vehicles.dat"));
-			// vehiclesFile.writeObject(vehicles);
-			// vehiclesFile.close();
 
 			ObjectOutputStream carsFile = new ObjectOutputStream(new FileOutputStream("cars.dat"));
 			carsFile.writeObject(cars);
@@ -92,25 +145,20 @@ public class MainModel {
 	public void loadFile() {
 		try {
 			ObjectInputStream customersFile = new ObjectInputStream(new FileInputStream("customers.dat"));
-			// ObjectInputStream vehiclesFile = new ObjectInputStream(new
-			// FileInputStream("vehicles.dat"));
 			ObjectInputStream carsFile = new ObjectInputStream(new FileInputStream("cars.dat"));
 			ObjectInputStream lorriesFile = new ObjectInputStream(new FileInputStream("lorries.dat"));
 			ObjectInputStream minibusesFile = new ObjectInputStream(new FileInputStream("minibuses.dat"));
 
-			customers = (ArrayList<Customer>) customersFile.readObject();
+			customers = (List<Customer>) customersFile.readObject();
 			customersFile.close();
 
-			// vehicles = (ArrayList<Vehicle>) vehiclesFile.readObject();
-			// vehiclesFile.close();
-
-			cars = (ArrayList<Car>) carsFile.readObject();
+			cars = (List<Car>) carsFile.readObject();
 			carsFile.close();
 
-			lorries = (ArrayList<Lorry>) lorriesFile.readObject();
+			lorries = (List<Lorry>) lorriesFile.readObject();
 			lorriesFile.close();
 
-			minibuses = (ArrayList<MiniBus>) minibusesFile.readObject();
+			minibuses = (List<MiniBus>) minibusesFile.readObject();
 			minibusesFile.close();
 
 		} catch (Exception e) {

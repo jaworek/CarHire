@@ -1,5 +1,8 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -8,36 +11,44 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import controller.StaffController;
 import net.miginfocom.swing.MigLayout;
+import objects.Customer;
+import objects.CustomerWrapper;
+import objects.Vehicle;
 
 public class StaffView extends AbstractView {
-	private JTextField textModel;
-	private JTextField textTopSpeed;
-	private JTextField textRegistrationNumber;
-	private JTextField textHireRate;
+	private JTextField textCarModel;
+	private JTextField textCarTopSpeed;
+	private JTextField textCarRegistrationNumber;
+	private JTextField textCarHireRate;
 	private JTable tableCustomers;
 	private JTextField textName;
 	private JTextField textAddress;
 	private JTextField textPhoneNumber;
 	private JTextField textEmail;
 	private JTextField textDateOfBirth;
-	private JTextField textFuel;
-	private JTextField textDoors;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTable table;
+	private JTextField textCarFuel;
+	private JTextField textCarDoors;
+	private JTextField textLorryModel;
+	private JTextField textLorryTopSpeed;
+	private JTextField textLorryRegistration;
+	private JTextField textLorryHireRate;
+	private JTextField textLorryLoadingCapacity;
+	private JTable tableCars;
 	private JTable tableHiredVehicles;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTable table_1;
+	private JTextField textMinibusModel;
+	private JTextField textMinibusTopSpeed;
+	private JTextField textMinibusRegistration;
+	private JTextField textMinibusHireRate;
+	private JTextField textMinibusSeating;
+	private JTable tableMinibuses;
+	private JTable tableLorries;
+	private JComboBox comboBoxCars;
+	private JComboBox comboBoxLorry;
+	private JComboBox comboBoxMinibus;
 
 	/**
 	 * Create the panel.
@@ -60,23 +71,23 @@ public class StaffView extends AbstractView {
 		JLabel lblCarModel = new JLabel("Model");
 		panelCar.add(lblCarModel, "cell 1 2,alignx trailing");
 
-		textModel = new JTextField();
-		panelCar.add(textModel, "cell 2 2,growx");
-		textModel.setColumns(10);
+		textCarModel = new JTextField();
+		panelCar.add(textCarModel, "cell 2 2,growx");
+		textCarModel.setColumns(10);
 
 		JLabel lblTopSpeed = new JLabel("Top speed");
 		panelCar.add(lblTopSpeed, "cell 1 3,alignx trailing");
 
-		textTopSpeed = new JTextField();
-		panelCar.add(textTopSpeed, "cell 2 3,growx");
-		textTopSpeed.setColumns(10);
+		textCarTopSpeed = new JTextField();
+		panelCar.add(textCarTopSpeed, "cell 2 3,growx");
+		textCarTopSpeed.setColumns(10);
 
 		JLabel lblNewLabel_1 = new JLabel("Registration number");
 		panelCar.add(lblNewLabel_1, "cell 1 4,alignx trailing");
 
-		textRegistrationNumber = new JTextField();
-		panelCar.add(textRegistrationNumber, "cell 2 4,growx");
-		textRegistrationNumber.setColumns(10);
+		textCarRegistrationNumber = new JTextField();
+		panelCar.add(textCarRegistrationNumber, "cell 2 4,growx");
+		textCarRegistrationNumber.setColumns(10);
 
 		JPanel panel_1 = new JPanel();
 		panelCar.add(panel_1, "cell 0 0 1 14,grow");
@@ -85,29 +96,29 @@ public class StaffView extends AbstractView {
 		JScrollPane scrollPane = new JScrollPane();
 		panel_1.add(scrollPane, "cell 0 0,alignx left,aligny top");
 
-		table = new JTable(staffController.generateAvailableCarsTable());
-		scrollPane.setViewportView(table);
+		tableCars = new JTable(staffController.generateAvailableCarsTable());
+		scrollPane.setViewportView(tableCars);
 
 		JLabel lblHireRate = new JLabel("Hire rate");
 		panelCar.add(lblHireRate, "cell 1 5,alignx trailing");
 
-		textHireRate = new JTextField();
-		panelCar.add(textHireRate, "cell 2 5,growx");
-		textHireRate.setColumns(10);
+		textCarHireRate = new JTextField();
+		panelCar.add(textCarHireRate, "cell 2 5,growx");
+		textCarHireRate.setColumns(10);
 
 		JLabel lblNewLabel_3 = new JLabel("Fuel type");
 		panelCar.add(lblNewLabel_3, "cell 1 6,alignx trailing");
 
-		textFuel = new JTextField();
-		panelCar.add(textFuel, "cell 2 6,growx");
-		textFuel.setColumns(10);
+		textCarFuel = new JTextField();
+		panelCar.add(textCarFuel, "cell 2 6,growx");
+		textCarFuel.setColumns(10);
 
 		JLabel lblNewLabel_4 = new JLabel("Number of doors");
 		panelCar.add(lblNewLabel_4, "cell 1 7,alignx trailing");
 
-		textDoors = new JTextField();
-		panelCar.add(textDoors, "cell 2 7,growx");
-		textDoors.setColumns(10);
+		textCarDoors = new JTextField();
+		panelCar.add(textCarDoors, "cell 2 7,growx");
+		textCarDoors.setColumns(10);
 
 		JButton btnNewButton = new JButton("Add car");
 		btnNewButton.addActionListener(staffController);
@@ -116,67 +127,97 @@ public class StaffView extends AbstractView {
 		JLabel label = new JLabel("Hire to customer:");
 		panelCar.add(label, "cell 1 9 2 1,alignx center");
 
-		JComboBox comboBox = new JComboBox();
-		comboBox.setActionCommand("comboCustomers");
-		panelCar.add(comboBox, "cell 1 10 2 1,growx");
+		comboBoxCars = new JComboBox();
+		comboBoxCars.addActionListener(staffController);
+		comboBoxCars.setActionCommand("comboCarCustomers");
+		panelCar.add(comboBoxCars, "cell 1 10 2 1,growx");
 
-		JButton button_1 = new JButton("Hire");
-		panelCar.add(button_1, "cell 1 11 2 1,alignx center");
+		JButton buttonHireCar = new JButton("Hire car");
+		buttonHireCar.addActionListener(staffController);
+		panelCar.add(buttonHireCar, "cell 1 11 2 1,alignx center");
 
 		JLabel label_1 = new JLabel("Remove selected vehicle:");
 		panelCar.add(label_1, "cell 1 12 2 1,alignx center");
 
-		JButton button = new JButton("Remove");
-		panelCar.add(button, "cell 1 13 2 1,alignx center");
+		JButton buttonRemoveCar = new JButton("Remove car");
+		buttonRemoveCar.addActionListener(staffController);
+		panelCar.add(buttonRemoveCar, "cell 1 13 2 1,alignx center");
 
 		// Lorry panel
 		JPanel panelLorry = new JPanel();
 		tabbedPane.addTab("Lorries", null, panelLorry, null);
-		panelLorry.setLayout(new MigLayout("", "[313.00,grow][112.00][grow]", "[][][][][][][]"));
+		panelLorry.setLayout(new MigLayout("", "[450][112.00,grow][grow]", "[][][][][][][][][][][][]"));
 
 		JLabel lblAddNewLorry = new JLabel("Add new lorry");
 		panelLorry.add(lblAddNewLorry, "cell 1 0 2 1,alignx center");
 
 		JPanel panel_3 = new JPanel();
-		panelLorry.add(panel_3, "cell 0 1 1 6,grow");
+		panelLorry.add(panel_3, "cell 0 0 1 12,grow");
+		panel_3.setLayout(new MigLayout("", "[454px]", "[404px]"));
+
+		JScrollPane scrollPane_4 = new JScrollPane();
+		panel_3.add(scrollPane_4, "cell 0 0,alignx left,aligny top");
+
+		tableLorries = new JTable(staffController.generateAvailableLorriesTable());
+		scrollPane_4.setViewportView(tableLorries);
 
 		JLabel lblModel = new JLabel("Model");
 		panelLorry.add(lblModel, "cell 1 1,alignx trailing");
 
-		textField_5 = new JTextField();
-		panelLorry.add(textField_5, "cell 2 1,growx");
-		textField_5.setColumns(10);
+		textLorryModel = new JTextField();
+		panelLorry.add(textLorryModel, "cell 2 1,growx");
+		textLorryModel.setColumns(10);
 
 		JLabel lblTopSpeed_1 = new JLabel("Top speed");
 		panelLorry.add(lblTopSpeed_1, "cell 1 2,alignx trailing");
 
-		textField_6 = new JTextField();
-		panelLorry.add(textField_6, "cell 2 2,growx");
-		textField_6.setColumns(10);
+		textLorryTopSpeed = new JTextField();
+		panelLorry.add(textLorryTopSpeed, "cell 2 2,growx");
+		textLorryTopSpeed.setColumns(10);
 
 		JLabel lblRegistrationNumber = new JLabel("Registration number");
 		panelLorry.add(lblRegistrationNumber, "cell 1 3,alignx trailing");
 
-		textField_7 = new JTextField();
-		panelLorry.add(textField_7, "cell 2 3,growx");
-		textField_7.setColumns(10);
+		textLorryRegistration = new JTextField();
+		panelLorry.add(textLorryRegistration, "cell 2 3,growx");
+		textLorryRegistration.setColumns(10);
 
 		JLabel lblHireRate_1 = new JLabel("Hire rate");
 		panelLorry.add(lblHireRate_1, "cell 1 4,alignx trailing");
 
-		textField_8 = new JTextField();
-		panelLorry.add(textField_8, "cell 2 4,growx");
-		textField_8.setColumns(10);
+		textLorryHireRate = new JTextField();
+		panelLorry.add(textLorryHireRate, "cell 2 4,growx");
+		textLorryHireRate.setColumns(10);
 
 		JLabel lblLoadingCapacity = new JLabel("Loading capacity");
 		panelLorry.add(lblLoadingCapacity, "cell 1 5,alignx trailing");
 
-		textField_9 = new JTextField();
-		panelLorry.add(textField_9, "cell 2 5,growx");
-		textField_9.setColumns(10);
+		textLorryLoadingCapacity = new JTextField();
+		panelLorry.add(textLorryLoadingCapacity, "cell 2 5,growx");
+		textLorryLoadingCapacity.setColumns(10);
 
-		JButton btnAddLorry = new JButton("Add lorry");
-		panelLorry.add(btnAddLorry, "cell 1 6 2 1,alignx center");
+		JButton buttonAddLorry = new JButton("Add lorry");
+		buttonAddLorry.addActionListener(staffController);
+		panelLorry.add(buttonAddLorry, "cell 1 6 2 1,alignx center");
+
+		JLabel label_2 = new JLabel("Hire to customer:");
+		panelLorry.add(label_2, "cell 1 7 2 1,alignx center");
+
+		comboBoxLorry = new JComboBox();
+		comboBoxLorry.addActionListener(staffController);
+		comboBoxLorry.setActionCommand("comboLorryCustomers");
+		panelLorry.add(comboBoxLorry, "cell 1 8 2 1,growx");
+
+		JButton buttonHireLorry = new JButton("Hire lorry");
+		buttonHireLorry.addActionListener(staffController);
+		panelLorry.add(buttonHireLorry, "cell 1 9 2 1,alignx center");
+
+		JLabel label_8 = new JLabel("Remove selected vehicle:");
+		panelLorry.add(label_8, "cell 1 10 2 1,alignx center");
+
+		JButton button = new JButton("Remove lorry");
+		button.addActionListener(staffController);
+		panelLorry.add(button, "cell 1 11 2 1,alignx center");
 
 		// Minibus panel
 		JPanel panelMinibus = new JPanel();
@@ -190,8 +231,8 @@ public class StaffView extends AbstractView {
 		JScrollPane scrollPane_2 = new JScrollPane();
 		panel_2.add(scrollPane_2, "cell 0 0,alignx left,aligny top");
 
-		table_1 = new JTable();
-		scrollPane_2.setViewportView(table_1);
+		tableMinibuses = new JTable(staffController.generateAvailableMinibusTable());
+		scrollPane_2.setViewportView(tableMinibuses);
 
 		JLabel labelAddMinibus = new JLabel("Add new minibus");
 		panelMinibus.add(labelAddMinibus, "cell 1 0 2 1,alignx center");
@@ -199,66 +240,70 @@ public class StaffView extends AbstractView {
 		JLabel labelModel = new JLabel("Model");
 		panelMinibus.add(labelModel, "cell 1 1,alignx trailing");
 
-		textField = new JTextField();
-		textField.setColumns(10);
-		panelMinibus.add(textField, "cell 2 1,growx");
+		textMinibusModel = new JTextField();
+		textMinibusModel.setColumns(10);
+		panelMinibus.add(textMinibusModel, "cell 2 1,growx");
 
 		JLabel label_4 = new JLabel("Top speed");
 		panelMinibus.add(label_4, "cell 1 2,alignx trailing");
 
-		textField_1 = new JTextField();
-		panelMinibus.add(textField_1, "cell 2 2,growx");
-		textField_1.setColumns(10);
+		textMinibusTopSpeed = new JTextField();
+		panelMinibus.add(textMinibusTopSpeed, "cell 2 2,growx");
+		textMinibusTopSpeed.setColumns(10);
 
 		JLabel label_5 = new JLabel("Registration number");
 		panelMinibus.add(label_5, "cell 1 3,alignx trailing");
 
-		textField_2 = new JTextField();
-		panelMinibus.add(textField_2, "cell 2 3,growx");
-		textField_2.setColumns(10);
+		textMinibusRegistration = new JTextField();
+		panelMinibus.add(textMinibusRegistration, "cell 2 3,growx");
+		textMinibusRegistration.setColumns(10);
 
 		JLabel label_6 = new JLabel("Hire rate");
 		panelMinibus.add(label_6, "cell 1 4,alignx trailing");
 
-		textField_3 = new JTextField();
-		panelMinibus.add(textField_3, "cell 2 4,growx");
-		textField_3.setColumns(10);
+		textMinibusHireRate = new JTextField();
+		panelMinibus.add(textMinibusHireRate, "cell 2 4,growx");
+		textMinibusHireRate.setColumns(10);
 
 		JLabel lblSeatingCapacity = new JLabel("Seating capacity");
 		panelMinibus.add(lblSeatingCapacity, "cell 1 5,alignx trailing");
 
-		textField_4 = new JTextField();
-		panelMinibus.add(textField_4, "cell 2 5,growx");
-		textField_4.setColumns(10);
+		textMinibusSeating = new JTextField();
+		panelMinibus.add(textMinibusSeating, "cell 2 5,growx");
+		textMinibusSeating.setColumns(10);
 
 		JButton btnAddMinibus = new JButton("Add minibus");
+		btnAddMinibus.addActionListener(staffController);
 		panelMinibus.add(btnAddMinibus, "cell 1 6 2 1,alignx center");
 
 		JLabel label_3 = new JLabel("Hire to customer:");
 		panelMinibus.add(label_3, "cell 1 7 2 1,alignx center");
 
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setActionCommand("comboCustomers");
-		panelMinibus.add(comboBox_1, "cell 1 8 2 1,growx");
+		comboBoxMinibus = new JComboBox();
+		comboBoxMinibus.addActionListener(staffController);
+		comboBoxMinibus.setActionCommand("comboMinibusCustomers");
+		panelMinibus.add(comboBoxMinibus, "cell 1 8 2 1,growx");
 
-		JButton button_2 = new JButton("Hire");
-		panelMinibus.add(button_2, "cell 1 9 2 1,alignx center");
+		JButton buttonHireMinibus = new JButton("Hire minibus");
+		buttonHireMinibus.addActionListener(staffController);
+		panelMinibus.add(buttonHireMinibus, "cell 1 9 2 1,alignx center");
 
 		JLabel label_7 = new JLabel("Remove selected vehicle:");
 		panelMinibus.add(label_7, "cell 1 10 2 1,alignx center");
 
-		JButton button_3 = new JButton("Remove");
-		panelMinibus.add(button_3, "cell 1 11 2 1,alignx center");
+		JButton buttonMinibus = new JButton("Remove minibus");
+		buttonMinibus.addActionListener(staffController);
+		panelMinibus.add(buttonMinibus, "cell 1 11 2 1,alignx center");
 
 		JPanel panelCustomers = new JPanel();
 		tabbedPane.addTab("Customers", null, panelCustomers, null);
 		panelCustomers.setLayout(new MigLayout("", "[265.00px][grow]", "[404px,grow][]"));
 
-		JScrollPane scrollPane_1 = new JScrollPane();
-		panelCustomers.add(scrollPane_1, "cell 0 0,alignx left,aligny top");
+		JScrollPane scrollPaneCustomers = new JScrollPane();
+		panelCustomers.add(scrollPaneCustomers, "cell 0 0,alignx left,aligny top");
 
 		tableCustomers = new JTable(staffController.generateCustomerTable());
-		scrollPane_1.setViewportView(tableCustomers);
+		scrollPaneCustomers.setViewportView(tableCustomers);
 
 		JButton btnSelect = new JButton("Select");
 		btnSelect.addActionListener(staffController);
@@ -310,51 +355,243 @@ public class StaffView extends AbstractView {
 		panel.add(textDateOfBirth, "cell 1 5,growx");
 		textDateOfBirth.setColumns(10);
 
-		JButton btnReturn = new JButton("Return");
-		btnReturn.addActionListener(staffController);
-
 		JLabel lblHiredCars = new JLabel("Hired cars");
 		panel.add(lblHiredCars, "cell 0 6 2 1,alignx center");
 
-		JScrollPane scrollPane_3 = new JScrollPane();
-		panel.add(scrollPane_3, "cell 0 7 2 1,grow");
+		JScrollPane scrollPaneCustomerCars = new JScrollPane();
+		panel.add(scrollPaneCustomerCars, "cell 0 7 2 3,grow");
 
 		tableHiredVehicles = new JTable();
-		scrollPane_3.setViewportView(tableHiredVehicles);
-		panel.add(btnReturn, "cell 0 9 2 1,alignx center");
+		scrollPaneCustomerCars.setViewportView(tableHiredVehicles);
 		panelCustomers.add(btnSelect, "cell 0 1,alignx center");
+
+		JButton btnReturn = new JButton("Return");
+		panelCustomers.add(btnReturn, "cell 1 1,alignx center");
+		btnReturn.addActionListener(staffController);
+	}
+
+	public JTextField getTextCarModel() {
+		return textCarModel;
+	}
+
+	public void setTextCarModel(JTextField textCarModel) {
+		this.textCarModel = textCarModel;
+	}
+
+	public JTextField getTextCarTopSpeed() {
+		return textCarTopSpeed;
+	}
+
+	public void setTextCarTopSpeed(JTextField textCarTopSpeed) {
+		this.textCarTopSpeed = textCarTopSpeed;
+	}
+
+	public JTextField getTextCarRegistrationNumber() {
+		return textCarRegistrationNumber;
+	}
+
+	public void setTextCarRegistrationNumber(JTextField textCarRegistrationNumber) {
+		this.textCarRegistrationNumber = textCarRegistrationNumber;
+	}
+
+	public JTextField getTextCarHireRate() {
+		return textCarHireRate;
+	}
+
+	public void setTextCarHireRate(JTextField textCarHireRate) {
+		this.textCarHireRate = textCarHireRate;
+	}
+
+	public JTextField getTextName() {
+		return textName;
+	}
+
+	public void setTextName(JTextField textName) {
+		this.textName = textName;
+	}
+
+	public JTextField getTextAddress() {
+		return textAddress;
+	}
+
+	public void setTextAddress(JTextField textAddress) {
+		this.textAddress = textAddress;
+	}
+
+	public JTextField getTextPhoneNumber() {
+		return textPhoneNumber;
+	}
+
+	public void setTextPhoneNumber(JTextField textPhoneNumber) {
+		this.textPhoneNumber = textPhoneNumber;
+	}
+
+	public JTextField getTextEmail() {
+		return textEmail;
+	}
+
+	public void setTextEmail(JTextField textEmail) {
+		this.textEmail = textEmail;
+	}
+
+	public JTextField getTextDateOfBirth() {
+		return textDateOfBirth;
+	}
+
+	public void setTextDateOfBirth(JTextField textDateOfBirth) {
+		this.textDateOfBirth = textDateOfBirth;
+	}
+
+	public JTextField getTextCarFuel() {
+		return textCarFuel;
+	}
+
+	public void setTextCarFuel(JTextField textCarFuel) {
+		this.textCarFuel = textCarFuel;
+	}
+
+	public JTextField getTextCarDoors() {
+		return textCarDoors;
+	}
+
+	public void setTextCarDoors(JTextField textCarDoors) {
+		this.textCarDoors = textCarDoors;
+	}
+
+	public JTextField getTextLorryModel() {
+		return textLorryModel;
+	}
+
+	public void setTextLorryModel(JTextField textLorryModel) {
+		this.textLorryModel = textLorryModel;
+	}
+
+	public JTextField getTextLorryTopSpeed() {
+		return textLorryTopSpeed;
+	}
+
+	public void setTextLorryTopSpeed(JTextField textLorryTopSpeed) {
+		this.textLorryTopSpeed = textLorryTopSpeed;
+	}
+
+	public JTextField getTextLorryRegistration() {
+		return textLorryRegistration;
+	}
+
+	public void setTextLorryRegistration(JTextField textLorryRegistration) {
+		this.textLorryRegistration = textLorryRegistration;
+	}
+
+	public JTextField getTextLorryHireRate() {
+		return textLorryHireRate;
+	}
+
+	public void setTextLorryHireRate(JTextField textLorryHireRate) {
+		this.textLorryHireRate = textLorryHireRate;
+	}
+
+	public JTextField getTextLorryLoadingCapacity() {
+		return textLorryLoadingCapacity;
+	}
+
+	public void setTextLorryLoadingCapacity(JTextField textLorryLoadingCapacity) {
+		this.textLorryLoadingCapacity = textLorryLoadingCapacity;
+	}
+
+	public JTable getTableCars() {
+		return tableCars;
+	}
+
+	public void setTableCars(JTable table) {
+		this.tableCars = table;
+	}
+
+	public JTable getTableHiredVehicles() {
+		return tableHiredVehicles;
+	}
+
+	public void setTableHiredVehicles(JTable tableHiredVehicles) {
+		this.tableHiredVehicles = tableHiredVehicles;
+	}
+
+	public JTextField getTextMinibusModel() {
+		return textMinibusModel;
+	}
+
+	public void setTextMinibusModel(JTextField textMinibusModel) {
+		this.textMinibusModel = textMinibusModel;
+	}
+
+	public JTextField getTextMinibusTopSpeed() {
+		return textMinibusTopSpeed;
+	}
+
+	public void setTextMinibusTopSpeed(JTextField textMinibusTopSpeed) {
+		this.textMinibusTopSpeed = textMinibusTopSpeed;
+	}
+
+	public JTextField getTextMinibusRegistration() {
+		return textMinibusRegistration;
+	}
+
+	public void setTextMinibusRegistration(JTextField textMinibusRegistration) {
+		this.textMinibusRegistration = textMinibusRegistration;
+	}
+
+	public JTextField getTextMinibusHireRate() {
+		return textMinibusHireRate;
+	}
+
+	public void setTextMinibusHireRate(JTextField textMinibusHireRate) {
+		this.textMinibusHireRate = textMinibusHireRate;
+	}
+
+	public JTextField getTextMinibusSeating() {
+		return textMinibusSeating;
+	}
+
+	public void setTextMinibusSeating(JTextField textMinibusSeating) {
+		this.textMinibusSeating = textMinibusSeating;
+	}
+
+	public JTable getTableMinibuses() {
+		return tableMinibuses;
+	}
+
+	public void setTableMinibuses(JTable tableMinibuses) {
+		this.tableMinibuses = tableMinibuses;
+	}
+
+	public JTable getTableLorries() {
+		return tableLorries;
+	}
+
+	public void setTableLorries(JTable tableLorries) {
+		this.tableLorries = tableLorries;
 	}
 
 	public JTextField getTextModel() {
-		return textModel;
+		return textCarModel;
 	}
 
 	public void setTextModel(JTextField textModel) {
-		this.textModel = textModel;
+		this.textCarModel = textModel;
 	}
 
 	public JTextField getTextTopSpeed() {
-		return textTopSpeed;
+		return textCarTopSpeed;
 	}
 
 	public void setTextTopSpeed(JTextField textTopSpeed) {
-		this.textTopSpeed = textTopSpeed;
-	}
-
-	public JTextField getTextRegistrationNumber() {
-		return textRegistrationNumber;
+		this.textCarTopSpeed = textTopSpeed;
 	}
 
 	public void setTextRegistrationNumber(JTextField textRegistrationNumber) {
-		this.textRegistrationNumber = textRegistrationNumber;
-	}
-
-	public JTextField getTextHireRate() {
-		return textHireRate;
+		this.textCarRegistrationNumber = textRegistrationNumber;
 	}
 
 	public void setTextHireRate(JTextField textHireRate) {
-		this.textHireRate = textHireRate;
+		this.textCarHireRate = textHireRate;
 	}
 
 	public JTable getTableCustomers() {
@@ -363,6 +600,66 @@ public class StaffView extends AbstractView {
 
 	public void setTableCustomers(JTable tableCustomers) {
 		this.tableCustomers = tableCustomers;
+	}
+
+	public JComboBox getComboBoxCars() {
+		return comboBoxCars;
+	}
+
+	public void setComboBoxCars(JComboBox comboBoxCars) {
+		this.comboBoxCars = comboBoxCars;
+	}
+
+	public JComboBox getComboBoxLorry() {
+		return comboBoxLorry;
+	}
+
+	public void setComboBoxLorry(JComboBox comboBoxLorry) {
+		this.comboBoxLorry = comboBoxLorry;
+	}
+
+	public JComboBox getComboBoxMinibus() {
+		return comboBoxMinibus;
+	}
+
+	public void setComboBoxMinibus(JComboBox comboBoxMinibus) {
+		this.comboBoxMinibus = comboBoxMinibus;
+	}
+
+	public void fillCustomerDetails(Customer customer) {
+		getTextName().setText(customer.getName());
+		getTextAddress().setText(customer.getAddress());
+		getTextPhoneNumber().setText(customer.getPhoneNumber());
+		getTextEmail().setText(customer.getEmail());
+		getTextDateOfBirth().setText(customer.getDateOfBirth());
+	}
+
+	public DefaultTableModel generateCustomerVehiclesTable(String[] columnNames, ArrayList<Vehicle> hiredCars) {
+		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+
+		for (Vehicle vehicle : hiredCars) {
+			int id = vehicle.getId();
+			String model = vehicle.getModel();
+			String type = vehicle.getClass().getSimpleName();
+
+			Object[] data = { id, model, type };
+
+			tableModel.addRow(data);
+		}
+
+		return tableModel;
+	}
+
+	public void setHiredCarsModel(String[] columnNames, ArrayList<Vehicle> hiredCars) {
+		getTableHiredVehicles().setModel(generateCustomerVehiclesTable(columnNames, hiredCars));
+	}
+
+	public void generateCustomerComboBox(List<Customer> customers) {
+		for (Customer customer : customers) {
+			comboBoxCars.addItem(new CustomerWrapper(customer));
+			comboBoxLorry.addItem(new CustomerWrapper(customer));
+			comboBoxMinibus.addItem(new CustomerWrapper(customer));
+		}
 	}
 
 }

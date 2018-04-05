@@ -8,7 +8,7 @@ public abstract class Vehicle implements Serializable {
 	private int topSpeed;
 	private String registrationNumber;
 	private double dailyHireRate;
-	private boolean hired = false;
+	private int hiredBy = -1;
 
 	Vehicle(int id, String model, int topSpeed, String registrationNumber, double dailyHireRate) {
 		this.id = id;
@@ -64,11 +64,11 @@ public abstract class Vehicle implements Serializable {
 		this.dailyHireRate = dailyHireRate;
 	}
 
-	public boolean isHired() {
-		return hired;
+	public int getHiredBy() {
+		return hiredBy;
 	}
 
-	public void setHired(boolean hired) {
-		this.hired = hired;
+	public void setHiredBy(int hiredBy) {
+		this.hiredBy = hiredBy;
 	}
 }

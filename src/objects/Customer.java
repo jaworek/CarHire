@@ -21,6 +21,16 @@ public class Customer implements Serializable {
 		this.hiredVehicles = new ArrayList<Vehicle>();
 	}
 
+	public Vehicle getVehicleById(int id) {
+		for (Vehicle vehicle : this.getHiredVehicles()) {
+			if (vehicle.getId() == id) {
+				return vehicle;
+			}
+		}
+
+		return null;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer{" + "id=" + id + ", name='" + name + '\'' + '}';

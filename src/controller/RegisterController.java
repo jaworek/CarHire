@@ -18,10 +18,6 @@ public class RegisterController extends AbstractController implements ActionList
 		this.registerView = new RegisterView(this);
 	}
 
-	void validateDetails() {
-
-	}
-
 	void createAccount() {
 		RegisterView registerView = (RegisterView) getView();
 		int id = mainModel.getCustomers().size();
@@ -31,7 +27,10 @@ public class RegisterController extends AbstractController implements ActionList
 				login = registerView.getTextLogin().getText(),
 				password = new String(registerView.getTextPassword1().getPassword()),
 				password2 = new String(registerView.getTextPassword2().getPassword());
-		if (!name.isEmpty() && password.equals(password2)) {
+
+		// Form validation
+		if (!name.isEmpty() && !phoneNumber.isEmpty() && !email.isEmpty() && !login.isEmpty()
+				&& password.equals(password2)) {
 			Customer newCustomer = new Customer(id, name, address, phoneNumber, email, doB, login, password);
 			mainModel.getCustomers().add(newCustomer);
 			System.out.println("Account created");
@@ -40,6 +39,15 @@ public class RegisterController extends AbstractController implements ActionList
 		} else {
 			registerView.setErrorLabelText("Wrong details");
 		}
+
+		registerView.getTextName().setText("");
+		registerView.getTextAddress().setText("");
+		registerView.getTextPhoneNumber().setText("");
+		registerView.getTextEmail().setText("");
+		registerView.getTextDoB().setText("");
+		registerView.getTextLogin().setText("");
+		registerView.getTextPassword1().setText("");
+		registerView.getTextPassword2().setText("");
 	}
 
 	@Override
